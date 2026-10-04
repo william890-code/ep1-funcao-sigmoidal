@@ -85,13 +85,55 @@ A função e o polinômio de Taylor foram avaliados para as entradas abaixo. O e
 A série de Taylor é centrada em \(z=0\) e converge para \(|z|<\pi\). Embora os exemplos estejam dentro desse raio, o polinômio truncado no grau 9 pode apresentar erros maiores quanto mais distante a entrada estiver da origem.
 
 ## Como executar
-Instruções de instalação e execução serão adicionadas aqui.
+
+É necessário ter Python 3 instalado. A biblioteca Matplotlib é usada para exibir os gráficos.
+
+Instale a dependência:
+
+python -m pip install matplotlib.
+
+Na pasta principal do repositório, execute:
+python src/sigmoidal.py
+
+## TABELA DE VALORES DE REFERÊNCIA
+
+| x | Sigmoide logística |
+|---:|---:|
+| -5 | 0,00669285 |
+| -2 | 0,11920292 |
+| 0 | 0,50000000 |
+| 2 | 0,88079708 |
+| 5 | 0,99330715 |
+
+Esses valores são da sigmoide logística calculada diretamente. A série de Taylor de grau 9 é uma aproximação centrada em zero; como \(x=\pm5\) está fora do seu raio de convergência \(|x|<\pi\), não use esses pontos para sugerir que o polinômio funciona bem ali.
 
 ## Exemplos de entrada e saída
-Serão adicionados após a implementação.
+O programa calcula a sigmoide logística e sua aproximação de Taylor de grau 9.
+
+Exemplo de entrada real: x = 2
+
+sigmoide(x) = 0.88079708
+Taylor grau 9 = 0.88395062
+erro absoluto = 3.154e-03
+
+Exemplo de entrada complexa: z = 1 + 1j
+
+sigmoide(z) = 0.78204157+0.20194823j
+Taylor grau 9 = 0.78198854+0.20202822j
+erro absoluto = 9.598e-05
 
 ## Resultados
-Tabelas e gráficos de erro e tempo de execução serão adicionados aqui.
+
+O tempo médio foi medido com 100.000 chamadas por rodada, repetindo a medição 5 vezes. Foi registrado o menor tempo por chamada. Os valores abaixo correspondem a uma execução e podem variar conforme o computador e os processos em execução.
+
+| Implementação | Tempo médio por chamada |
+|---|---:|
+| Sigmoide logística | 277,3 ns |
+| Taylor de grau 9 | 507,2 ns |
+
+Nesta execução, a implementação logística foi mais rápida que o polinômio de Taylor. O gráfico de tempo de execução apresenta essa comparação.
+
+<img width="682" height="493" alt="image" src="https://github.com/user-attachments/assets/15c0777d-4168-4a7b-9e4c-555cf006f4ee" />
 
 ## Apresentação
 Link do vídeo no YouTube será adicionado aqui.
