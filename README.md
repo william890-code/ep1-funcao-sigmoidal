@@ -41,6 +41,49 @@ s(x) ≈ 1/2 + x/4 - x^3/48 + x^5/480
 A série centrada em zero converge para |x| < pi.
 Por isso, essa aproximação não é adequada para x = 5 ou x = -5.
 
+## Propriedades da função
+
+A sigmoide logística é definida por
+
+\[
+s(z) = \frac{1}{1 + e^{-z}}.
+\]
+
+Ela satisfaz as seguintes propriedades, desde que a função esteja definida:
+
+- **Simetria:** \(s(-z) = 1 - s(z)\).
+- **Derivada:** \(s'(z) = s(z)(1 - s(z))\).
+- **Valor na origem:** \(s(0) = \frac{1}{2}\).
+
+As propriedades foram verificadas numericamente para entradas reais e complexas. A derivada foi aproximada pela diferença central:
+
+\[
+s'(z) \approx \frac{s(z+h)-s(z-h)}{2h},
+\qquad h=10^{-6}.
+\]
+
+### Resultados da verificação
+
+| Entrada \(z\) | Erro da simetria | Erro da derivada |
+|---|---:|---:|
+| \(0{,}5\) | \(1{,}551\times10^{-17}\) | \(1{,}071\times10^{-11}\) |
+| \(1+i\) | \(2{,}776\times10^{-17}\) | \(7{,}386\times10^{-11}\) |
+| \(0{,}5+2i\) | \(3{,}331\times10^{-16}\) | \(1{,}439\times10^{-10}\) |
+
+Os erros pequenos são compatíveis com arredondamentos numéricos e com a aproximação da derivada por diferença central.
+
+## Testes com entradas complexas
+
+A função e o polinômio de Taylor foram avaliados para as entradas abaixo. O erro é o módulo da diferença entre os resultados:
+
+| Entrada \(z\) | Sigmoide logística | Taylor até grau 9 | Erro absoluto |
+|---|---:|---:|---:|
+| \(1+i\) | \(0{,}78204157+0{,}20194823i\) | \(0{,}78198854+0{,}20202822i\) | \(9{,}598\times10^{-5}\) |
+| \(1-i\) | \(0{,}78204157-0{,}20194823i\) | \(0{,}78198854-0{,}20202822i\) | \(9{,}598\times10^{-5}\) |
+| \(0{,}5+2i\) | \(0{,}86620562+0{,}63901905i\) | \(0{,}86496744+0{,}64842010i\) | \(9{,}482\times10^{-3}\) |
+
+A série de Taylor é centrada em \(z=0\) e converge para \(|z|<\pi\). Embora os exemplos estejam dentro desse raio, o polinômio truncado no grau 9 pode apresentar erros maiores quanto mais distante a entrada estiver da origem.
+
 ## Como executar
 Instruções de instalação e execução serão adicionadas aqui.
 
