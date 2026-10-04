@@ -122,6 +122,14 @@ sigmoide(z) = 0.78204157+0.20194823j
 Taylor grau 9 = 0.78198854+0.20202822j
 erro absoluto = 9.598e-05
 
+- **Sigmoide logística: é a função que queremos calcular. Para números reais, transforma qualquer entrada em um resultado entre 0 e 1. Por exemplo, \(s(0)=0{,}5\).
+- **Taylor de grau 9: é uma fórmula polinomial usada para aproximar a sigmoide. Ela inclui termos até \(x^9\). Perto de zero, costuma dar um valor muito próximo da função original; mais longe, pode ficar menos precisa.
+- **Erro absoluto: mede a distância entre o resultado aproximado e o resultado da sigmoide:
+\[
+\text{erro} = |\text{sigmoide} - \text{Taylor}|.
+\]
+Quanto menor o erro, mais próxima está a aproximação. Se o erro for zero, os dois resultados coincidem naquele valor de entrada.
+
 ## Resultados
 
 O tempo médio foi medido com 100.000 chamadas por rodada, repetindo a medição 5 vezes. Foi registrado o menor tempo por chamada. Os valores abaixo correspondem a uma execução e podem variar conforme o computador e os processos em execução.
