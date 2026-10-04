@@ -46,29 +46,29 @@ Por isso, essa aproximação não é adequada para x = 5 ou x = -5.
 A sigmoide logística é definida por
 
 \[
-s(z) = \frac{1}{1 + e^{-z}}.
+s(z) = 1/(1 + e^-z).
 \]
 
 Ela satisfaz as seguintes propriedades, desde que a função esteja definida:
 
-- **Simetria:** \(s(-z) = 1 - s(z)\).
-- **Derivada:** \(s'(z) = s(z)(1 - s(z))\).
-- **Valor na origem:** \(s(0) = \frac{1}{2}\).
+- **Simetria:** (s(-z) = 1 - s(z)).
+- **Derivada:** (s'(z) = s(z)(1 - s(z))).
+- **Valor na origem:** (s(0) = 1/2).
 
 As propriedades foram verificadas numericamente para entradas reais e complexas. A derivada foi aproximada pela diferença central:
 
 \[
-s'(z) \approx \frac{s(z+h)-s(z-h)}{2h},
-\qquad h=10^{-6}.
+s'(z) approx {s(z+h)-s(z-h)}/{2h},
+h=10^-6.
 \]
 
 ### Resultados da verificação
 
 | Entrada \(z\) | Erro da simetria | Erro da derivada |
 |---|---:|---:|
-| \(0{,}5\) | \(1{,}551\times10^{-17}\) | \(1{,}071\times10^{-11}\) |
-| \(1+i\) | \(2{,}776\times10^{-17}\) | \(7{,}386\times10^{-11}\) |
-| \(0{,}5+2i\) | \(3{,}331\times10^{-16}\) | \(1{,}439\times10^{-10}\) |
+| (0,5) | (1,551\times10^{-17}) | (1,071\times10^{-11}) |
+| (1+i) | (2,776\times10^{-17}) | (7,386\times10^{-11}) |
+| (0,5+2i) | (3,331\times10^{-16}) | (1,439\times10^{-10}) |
 
 Os erros pequenos são compatíveis com arredondamentos numéricos e com a aproximação da derivada por diferença central.
 
@@ -76,13 +76,13 @@ Os erros pequenos são compatíveis com arredondamentos numéricos e com a aprox
 
 A função e o polinômio de Taylor foram avaliados para as entradas abaixo. O erro é o módulo da diferença entre os resultados:
 
-| Entrada \(z\) | Sigmoide logística | Taylor até grau 9 | Erro absoluto |
+| Entrada (z) | Sigmoide logística | Taylor até grau 9 | Erro absoluto |
 |---|---:|---:|---:|
-| \(1+i\) | \(0{,}78204157+0{,}20194823i\) | \(0{,}78198854+0{,}20202822i\) | \(9{,}598\times10^{-5}\) |
-| \(1-i\) | \(0{,}78204157-0{,}20194823i\) | \(0{,}78198854-0{,}20202822i\) | \(9{,}598\times10^{-5}\) |
-| \(0{,}5+2i\) | \(0{,}86620562+0{,}63901905i\) | \(0{,}86496744+0{,}64842010i\) | \(9{,}482\times10^{-3}\) |
+| (1+i) | (0,78204157+0,20194823i) | (0,78198854+0,20202822i) | (9,598\times10^{-5}) |
+| (1-i) | (0,78204157-0,20194823i) | \(0,78198854-0,20202822i) | (9,598\times10^{-5}) |
+| (0,5+2i) | \(0,86620562+0,63901905i) | \(0,86496744+0,64842010i) | (9,482\times10^{-3}) |
 
-A série de Taylor é centrada em \(z=0\) e converge para \(|z|<\pi\). Embora os exemplos estejam dentro desse raio, o polinômio truncado no grau 9 pode apresentar erros maiores quanto mais distante a entrada estiver da origem.
+A série de Taylor é centrada em (z=0) e converge para (|z|<pi). Embora os exemplos estejam dentro desse raio, o polinômio truncado no grau 9 pode apresentar erros maiores quanto mais distante a entrada estiver da origem.
 
 ## Como executar
 
@@ -105,7 +105,7 @@ python src/sigmoidal.py
 | 2 | 0,88079708 |
 | 5 | 0,99330715 |
 
-Esses valores são da sigmoide logística calculada diretamente. A série de Taylor de grau 9 é uma aproximação centrada em zero; como \(x=\pm5\) está fora do seu raio de convergência \(|x|<\pi\), não use esses pontos para sugerir que o polinômio funciona bem ali.
+Esses valores são da sigmoide logística calculada diretamente. A série de Taylor de grau 9 é uma aproximação centrada em zero; como \(x= 5) está fora do seu raio de convergência (|x|<pi), não use esses pontos para sugerir que o polinômio funciona bem ali.
 
 ## Exemplos de entrada e saída
 O programa calcula a sigmoide logística e sua aproximação de Taylor de grau 9.
@@ -116,13 +116,13 @@ sigmoide(x) = 0.88079708
 Taylor grau 9 = 0.88395062
 erro absoluto = 3.154e-03
 
-Exemplo de entrada complexa: z = 1 + 1j
+Exemplo de entrada complexa: x = 1 + 1j
 
-sigmoide(z) = 0.78204157+0.20194823j
+sigmoide(x) = 0.78204157+0.20194823j
 Taylor grau 9 = 0.78198854+0.20202822j
 erro absoluto = 9.598e-05
 
-- **Sigmoide logística:** é a função que queremos calcular. Para números reais, transforma qualquer entrada em um resultado entre 0 e 1. Por exemplo, \(s(0)=0{,}5\).
+- **Sigmoide logística:** é a função que queremos calcular. Para números reais, transforma qualquer entrada em um resultado entre 0 e 1. Por exemplo, (s(0)=0,5).
 - **Taylor de grau 9:** é uma fórmula polinomial usada para aproximar a sigmoide. Ela inclui termos até \(x^9\). Perto de zero, costuma dar um valor muito próximo da função original; mais longe, pode ficar menos precisa.
 - **Erro absoluto:** mede a distância entre o resultado aproximado e o resultado da sigmoide:
 \[
